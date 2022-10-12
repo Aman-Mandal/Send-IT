@@ -2,9 +2,8 @@ import { Navbar, Footer, Header } from './components'
 
 const App = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       <div className="">
-        
         <Header />
       </div>
       <Footer />

@@ -1,5 +1,15 @@
-const App = () => {
-  return <p className="text-4xl underline">Hello</p>;
-};
+import { Navbar, Footer, Header } from './components'
 
-export default App;
+const App = () => {
+  return (
+    <div className="min-h-screen">
+      <div className="">
+        <Navbar />
+        <Header />
+      </div>
+      <Footer />
+    </div>
+  )
+}
+
+export default App

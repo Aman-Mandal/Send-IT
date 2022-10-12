@@ -6,8 +6,8 @@ const Navbar = () => {
   const [menuToggle, setMenuToggle] = useState(false)
 
   return (
-    <nav className="w-full bg-purple-700">
-      <div className="flex items-center justify-between w-[90%] mx-auto py-5 border-b-2 border-purple-900">
+    <nav className="w-full bg-inherit">
+      <div className="flex items-center justify-between w-[90%] mx-auto py-5 border-b-2 border-gray-700">
         <h1 className="text-4xl text-white font-extrabold">send.io</h1>
         <ul className="hidden md:flex text-lg space-x-7 text-white font-semibold items-center">
           <li>Home</li>

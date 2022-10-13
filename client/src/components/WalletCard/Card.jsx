@@ -3,7 +3,7 @@ import { FiInfo } from 'react-icons/fi'
 
 const Card = () => {
   return (
-    <div className="rounded-xl flex flex-col justify-between w-[27rem] z-10 border border-gray-800 bg-gradient-to-br to-[#000000] from-[#0f0f0f] py-5 px-6 h-[15rem] mx-auto shadow-2xl ">
+    <div className="rounded-xl flex flex-col justify-between w-full md:w-[27rem] z-10 border border-gray-800 bg-gradient-to-br to-[#000000] from-[#0f0f0f] py-5 px-6 h-[15rem] mx-auto shadow-2xl ">
       <div className="flex justify-between ">
         <img src={ethLogo} className="w-12" />
         <FiInfo className="text-gray-500 text-xl cursor-pointer" />

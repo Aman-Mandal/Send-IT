@@ -1,67 +1,138 @@
-import { Navbar, Card } from '../index'
+import { Navbar, Card, Loader } from '../index'
+import { GiAlliedStar } from 'react-icons/gi'
+import { MdOutlineBadge } from 'react-icons/md'
+import { useState } from 'react'
 
 const Header = () => {
+  const [address, setAddress] = useState('')
+  const [ethAmount, setEthAmount] = useState('')
+  const [message, setMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const connectWallet = () => {}
+
+  const addressChangeHandler = event => {
+    setAddress(event.target.value)
+  }
+
+  const amountChangeHandler = event => {
+    setEthAmount(event.target.value)
+  }
+
+  const messageChangeHandler = event => {
+    setMessage(event.target.value)
+  }
+
+  const sendTransactionHandler = event => {
+    event.preventDefault()
+
+    try {
+      if (ethAmount <= 0) {
+        throw new Error('Please enter amount greater than 0!!')
+      }
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
   return (
     <header className="bg-gradient-to-tr min-h-screen from-[#050810] via-[#0A0A18] to-[#202155] ">
       <Navbar />
       <div className="min-w-screen py-20 ">
         <div className="flex w-[85%] mx-auto">
-          <div className="flex-[0.5]">
-            <h1 className="text-5xl font-semibold py-6 text-white">
-              Send Crypto <br /> Anywhere in the World
+          <div className="flex-[0.5] pt-10">
+            <h1 className="text-5xl font-bold py-8 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-900 via-gray-400 leading-[3.3rem] tracking-wide">
+              Trusted and Secure <br /> Crypto & Ethereum <br /> exchange.
             </h1>
             <p className="text-base text-gray-400 pb-6">
               Get started with the easiest and most <br /> secure platform to
               send crypto.
             </p>
 
-            <button className="bg-gray-800 border border-gray-200 my-4 text-white px-6 py-3 rounded-lg shadow-lg">
+            <button
+              onClick={connectWallet}
+              className="bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-200 my-10 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-gray-900"
+            >
               Connect Wallet
             </button>
+
+            <div className="flex gap-8 my-10">
+              <p className="flex items-center gap-1 text-gray-500 text-sm">
+                <GiAlliedStar className="text-gray-300" />
+                Trustpilot 4.7 <span className="text-gray-700">/5</span>
+              </p>
+              <p className="flex items-center gap-1 text-gray-500 text-sm">
+                <MdOutlineBadge className="text-gray-300" />
+                Bit Degree 8.7 <span className="text-gray-700">/10</span>
+              </p>
+            </div>
           </div>
+
+          {/* Card */}
           <div className="flex-[0.5] ">
             <div>
               <Card />
             </div>
-            {/* <div className="relative pl-3 z-[1]">
-              <form className="flex flex-col  w-[35rem] absolute px-20 -top-24 py-32 rounded-xl ">
-                <label
-                  className="text-sm text-white font-thin tracking-wider"
-                  htmlFor="tx-address"
-                >
-                  Address
-                </label>
-                <input
-                  className="rounded py-2 mb-2 border border-gray-200 placeholder:0x2e456cf642244 placeholder:text-black "
-                  type="text"
-                  id="tx-address"
-                />
-                <label
-                  className="text-sm text-white font-thin tracking-wider"
-                  htmlFor="address"
-                >
-                  Amount (ETH)
-                </label>
 
-                <input
-                  className="rounded py-2 mb-2 border border-gray-200
-                placeholder:0x2e456cf642244 placeholder:text-black "
-                  type="number"
-                  id="amount"
-                />
-                <label
-                  className="text-sm text-white font-thin tracking-wider"
-                  htmlFor="message"
+            {/* Form */}
+            <form className="flex flex-col bg-gradient-to-tr from-gray-800 to-gray-900 border border-gray-200  w-[32rem] my-8  px-14 pt-10 pb-6 rounded-xl mx-auto">
+              <label
+                className="text-sm text-gray-300 pb-1 font-thin tracking-wider"
+                htmlFor="tx-address"
+              >
+                Address
+              </label>
+              <input
+                onChange={addressChangeHandler}
+                value={address}
+                className="rounded py-2 px-1 mb-3   placeholder:text-gray-400 "
+                type="text"
+                id="tx-address"
+                placeholder="0x000000000000"
+              />
+              <label
+                className="text-sm text-gray-300  pb-1 font-thin tracking-wider"
+                htmlFor="tx-amount"
+              >
+                Amount (ETH)
+              </label>
+
+              <input
+                onChange={amountChangeHandler}
+                value={ethAmount}
+                className="rounded px-1 py-2 mb-3  placeholder:text-gray-400 "
+                type="number"
+                step={0.01}
+                id="tx-amount"
+                placeholder="2.3eth"
+              />
+              <label
+                className="text-sm text-gray-300  pb-1 font-thin tracking-wider"
+                htmlFor="tx-message"
+              >
+                Message
+              </label>
+              <input
+                onChange={messageChangeHandler}
+                value={message}
+                className="rounded px-1 py-2 mb-3  placeholder:text-gray-400 "
+                type="text"
+                id="tx-message"
+                placeholder="Any message with your transaction..."
+              />
+
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <button
+                  type="submit"
+                  onClick={sendTransactionHandler}
+                  className="bg-gray-900 border border-gray-200 my-6 text-white py-3 rounded-lg shadow-lg hover:bg-gray-700"
                 >
-                  Message
-                </label>
-                <input
-                  className="rounded py-2 mb-2 border border-gray-200 placeholder:0x2e456cf642244 placeholder:text-black "
-                  type="text"
-                  id="message"
-                />
-              </form>
-            </div> */}
+                  Send Crypto
+                </button>
+              )}
+            </form>
           </div>
         </div>
       </div>

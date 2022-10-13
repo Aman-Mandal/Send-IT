@@ -6,7 +6,7 @@ const App = () => {
       <div className="">
         <Header />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

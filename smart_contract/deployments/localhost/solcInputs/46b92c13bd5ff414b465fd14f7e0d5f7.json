@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Transactions.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\n\r\npragma solidity ^0.8.7;\r\n\r\ncontract Transactions {\r\n    uint256 transactionCount;\r\n\r\n    struct TransferStruct {\r\n        address sender;\r\n        address reciever;\r\n        uint256 amount;\r\n        string message;\r\n        uint256 timestamp;\r\n    }\r\n\r\n    TransferStruct[] transactionsArray;\r\n\r\n    function sendCrypto(\r\n        address payable reciever,\r\n        uint256 amount,\r\n        string memory message\r\n    ) public {\r\n        transactionCount += 1;\r\n        transactionsArray.push(\r\n            TransferStruct(\r\n                msg.sender,\r\n                reciever,\r\n                amount,\r\n                message,\r\n                block.timestamp\r\n            )\r\n        );\r\n    }\r\n\r\n    function getAllTransactions()\r\n        public\r\n        view\r\n        returns (TransferStruct[] memory)\r\n    {\r\n        return transactionsArray;\r\n    }\r\n\r\n    function getTransactionCount() public view returns (uint256) {\r\n        return transactionCount;\r\n    }\r\n}\r\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

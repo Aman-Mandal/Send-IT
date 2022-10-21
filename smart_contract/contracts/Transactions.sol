@@ -10,18 +10,25 @@ contract Transactions {
         address reciever;
         uint256 amount;
         string message;
+        uint256 timestamp;
     }
 
     TransferStruct[] transactionsArray;
 
     function sendCrypto(
         address payable reciever,
-        uint amount,
+        uint256 amount,
         string memory message
     ) public {
         transactionCount += 1;
         transactionsArray.push(
-            TransferStruct(msg.sender, reciever, amount, message)
+            TransferStruct(
+                msg.sender,
+                reciever,
+                amount,
+                message,
+                block.timestamp
+            )
         );
     }
 

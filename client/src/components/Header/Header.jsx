@@ -2,6 +2,8 @@ import { Navbar, Card, Loader } from '../index'
 import { GiAlliedStar } from 'react-icons/gi'
 import { MdOutlineBadge } from 'react-icons/md'
 import { useState } from 'react'
+import { TransactionsContext } from '../../context/TransactionsContext'
+import { useContext } from 'react'
 
 const Header = () => {
   const [address, setAddress] = useState('')
@@ -9,7 +11,7 @@ const Header = () => {
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const connectWallet = () => {}
+  const { connectWallet, currentAccount } = useContext(TransactionsContext)
 
   const addressChangeHandler = event => {
     setAddress(event.target.value)
@@ -49,12 +51,14 @@ const Header = () => {
               send crypto.
             </p>
 
-            <button
-              onClick={connectWallet}
-              className="bg-gradient-to-r w-[15rem] md:mx-0 mx-auto from-gray-800 to-gray-900 border border-gray-200 my-10 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-gray-900"
-            >
-              Connect Wallet
-            </button>
+            {!currentAccount && (
+              <button
+                onClick={connectWallet}
+                className="bg-gradient-to-r w-[15rem] md:mx-0 mx-auto from-gray-800 to-gray-900 border border-gray-200 my-10 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-gray-900"
+              >
+                Connect Wallet
+              </button>
+            )}
 
             <div className="flex gap-8 my-10 mx-auto md:mx-0">
               <p className="flex items-center gap-1 text-gray-500 text-sm">

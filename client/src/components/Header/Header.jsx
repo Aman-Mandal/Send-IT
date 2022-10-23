@@ -4,6 +4,10 @@ import { MdOutlineBadge } from 'react-icons/md'
 import { useState } from 'react'
 import { TransactionsContext } from '../../context/TransactionsContext'
 import { useContext } from 'react'
+import newYorkTimesLogo from '../../assets/newyork1.png'
+import oracleLogo from '../../assets/oracle.png'
+import forbesLogo from '../../assets/forbes.png'
+import polygonLogo from '../../assets/polygon.png'
 
 const Header = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -28,7 +32,7 @@ const Header = () => {
     <header className="bg-gradient-to-tr min-h-screen from-[#050810] via-[#0A0A18] to-[#202155] ">
       <Navbar />
       <div className="min-w-screen py-20 ">
-        <div className="flex lg:flex-row flex-col w-[95%] md:w-[85%] mx-auto max-w-7xl">
+        <div className="flex lg:flex-row flex-col w-[95%] md:w-[85%] mx-auto max-w-7xl  ">
           <div className="flex-[0.5] flex flex-col pt-10">
             <h1 className="text-4xl md:text-5xl text-center md:text-left font-bold py-8 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-900 via-gray-400 md:leading-[3.3rem] md:tracking-wide">
               Trusted and Secure <br /> Crypto & Ethereum <br /> exchange.
@@ -121,6 +125,22 @@ const Header = () => {
                 </button>
               )}
             </form>
+          </div>
+        </div>
+        <div className="w-[95%] md:w-[85%] mx-auto py-4">
+          <p className="text-center  text-sm font-medium tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-900 via-gray-400">
+            Buy <span className='text-white'> $20</span> or more in crypto on your first order and you'll get up to
+            <span className='text-white'> $2</span> in free BTC as reward
+          </p>
+          <div className="h-[2px] w-full mt-6 bg-gradient-to-tr from-[#000000] via-[#383838] to-[#000000] " />
+          <div className="flex items-center justify-evenly pt-12">
+            <img className="w-32 h-8" src={forbesLogo} alt="Forbes" />
+            <img
+              className="w-60 h-9"
+              src={newYorkTimesLogo}
+              alt="New York Times"
+            />
+            <img className="w-44 h-6" src={oracleLogo} alt="Oracle" />
           </div>
         </div>
       </div>

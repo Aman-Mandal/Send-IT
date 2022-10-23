@@ -6,35 +6,22 @@ import { TransactionsContext } from '../../context/TransactionsContext'
 import { useContext } from 'react'
 
 const Header = () => {
-  const [address, setAddress] = useState('')
-  const [ethAmount, setEthAmount] = useState('')
-  const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const { connectWallet, currentAccount } = useContext(TransactionsContext)
-
-  const addressChangeHandler = event => {
-    setAddress(event.target.value)
-  }
-
-  const amountChangeHandler = event => {
-    setEthAmount(event.target.value)
-  }
-
-  const messageChangeHandler = event => {
-    setMessage(event.target.value)
-  }
+  const {
+    connectWallet,
+    currentAccount,
+    formData,
+    changeHandler,
+    sendTransaction,
+  } = useContext(TransactionsContext)
 
   const sendTransactionHandler = event => {
+    const { addressTo, amount, message } = formData
     event.preventDefault()
 
-    try {
-      if (ethAmount <= 0) {
-        throw new Error('Please enter amount greater than 0!!')
-      }
-    } catch (error) {
-      console.error(error.message)
-    }
+    if (!addressTo || !amount || !message) return
+    sendTransaction()
   }
 
   return (
@@ -87,8 +74,7 @@ const Header = () => {
                 Address
               </label>
               <input
-                onChange={addressChangeHandler}
-                value={address}
+                onChange={e => changeHandler(e, 'addressTo')}
                 className="rounded py-2 px-1 mb-3   placeholder:text-gray-400 "
                 type="text"
                 id="tx-address"
@@ -102,8 +88,7 @@ const Header = () => {
               </label>
 
               <input
-                onChange={amountChangeHandler}
-                value={ethAmount}
+                onChange={e => changeHandler(e, 'amount')}
                 className="rounded px-1 py-2 mb-3  placeholder:text-gray-400 "
                 type="number"
                 step={0.01}
@@ -117,8 +102,7 @@ const Header = () => {
                 Message
               </label>
               <input
-                onChange={messageChangeHandler}
-                value={message}
+                onChange={e => changeHandler(e, 'message')}
                 className="rounded px-1 py-2 mb-3  placeholder:text-gray-400 "
                 type="text"
                 id="tx-message"

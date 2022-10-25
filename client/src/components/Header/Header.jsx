@@ -29,7 +29,7 @@ const Header = () => {
   }
 
   return (
-    <header className="bg-gradient-to-tr min-h-screen from-[#050810] via-[#0A0A18] to-[#202155] ">
+    <>
       <Navbar />
       <div className="min-w-screen py-20 ">
         <div className="flex lg:flex-row flex-col w-[95%] md:w-[85%] mx-auto max-w-7xl  ">
@@ -129,8 +129,9 @@ const Header = () => {
         </div>
         <div className="w-[95%] md:w-[85%] mx-auto py-4">
           <p className="text-center  text-sm font-medium tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-900 via-gray-400">
-            Buy <span className='text-white'> $20</span> or more in crypto on your first order and you'll get up to
-            <span className='text-white'> $2</span> in free BTC as reward
+            Buy <span className="text-white"> $20</span> or more in crypto on
+            your first order and you'll get up to
+            <span className="text-white"> $2</span> in free BTC as reward
           </p>
           <div className="h-[2px] w-full mt-6 bg-gradient-to-tr from-[#000000] via-[#383838] to-[#000000] " />
           <div className="flex items-center justify-evenly pt-12">
@@ -138,13 +139,13 @@ const Header = () => {
             <img
               className="w-60 h-9"
               src={newYorkTimesLogo}
-              alt="New York Times"
+              alt="NewYorkTimes"
             />
             <img className="w-44 h-6" src={oracleLogo} alt="Oracle" />
           </div>
         </div>
       </div>
-    </header>
+    </>
   )
 }
 

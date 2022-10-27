@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Card from './Card'
+import { motion } from 'framer-motion'
 import {
   image1,
   image2,
@@ -79,6 +80,13 @@ const data = [
 ]
 
 const Testimonials = () => {
+  const [width, setWidth] = useState(0)
+  const carousel = useRef()
+
+  useEffect(() => {
+    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth)
+  }, [])
+
   return (
     <section className="w-[95%] md:w-[85%] mx-auto py-20">
       <h2 className="text-center text-white text-5xl font-semibold py-5">
@@ -90,16 +98,36 @@ const Testimonials = () => {
       </p>
       <div className="h-[2px] w-[10rem] mx-auto mt-4 bg-gradient-to-tr from-[#000000] via-[#383838] to-[#000000] " />
 
-      <div className="flex my-10">
-        {data.map(data => (
-          <Card
-            key={data.id}
-            img={data.img}
-            name={data.name}
-            place={data.place}
-            message={data.message}
-          />
-        ))}
+      <motion.div
+        ref={carousel}
+        whileTap={{ cursor: 'grabbing' }}
+        className="my-10 cursor-grab overflow-hidden "
+      >
+        <motion.div
+          drag="x"
+          dragConstraints={{ right: 0, left: -width }}
+          className="flex gap-20"
+        >
+          {data.map(data => (
+            <Card
+              key={data.id}
+              img={data.img}
+              name={data.name}
+              place={data.place}
+              message={data.message}
+            />
+          ))}
+        </motion.div>
+      </motion.div>
+
+      <div className="py-7 w-full border border-gray-200 bg-gradient-to-r from-[#40404A] to-[#14131b] my-10 text-white text-center rounded-xl">
+        <h2 className="text-4xl leading-10">
+          Let's start investing your crypto <br /> coin right now!
+        </h2>
+
+        <button className="bg-gray-900 border border-gray-200 mt-8 text-white py-3 w-44 rounded-lg shadow-lg hover:bg-gray-700">
+          Let's get started
+        </button>
       </div>
     </section>
   )

@@ -53,30 +53,30 @@ const data = [
     message:
       'The first time trying to register, the verification process is quite fast as compared to the competitors. For beginners will be very helpful.',
   },
-  {
-    id: 't6',
-    name: 'Emma',
-    place: 'Berlin, German',
-    img: image6,
-    message:
-      'A crypto website that really helps me in trading or investing in cryptocurrencies. The pair in each coin is very diverse.',
-  },
-  {
-    id: 't7',
-    name: 'Daemon',
-    place: 'Mumbai, India',
-    img: image7,
-    message:
-      "Send.io has complete features and is very easy to use, lower admin fees and trading fees are one of it's advantages",
-  },
-  {
-    id: 't8',
-    name: 'Sam',
-    place: 'London, England',
-    img: image8,
-    message:
-      'A crypto website that really helps me in trading or investing in cryptocurrencies. The pair in each coin is very diverse.',
-  },
+  // {
+  //   id: 't6',
+  //   name: 'Emma',
+  //   place: 'Berlin, German',
+  //   img: image6,
+  //   message:
+  //     'A crypto website that really helps me in trading or investing in cryptocurrencies. The pair in each coin is very diverse.',
+  // },
+  // {
+  //   id: 't7',
+  //   name: 'Daemon',
+  //   place: 'Mumbai, India',
+  //   img: image7,
+  //   message:
+  //     "Send.io has complete features and is very easy to use, lower admin fees and trading fees are one of it's advantages",
+  // },
+  // {
+  //   id: 't8',
+  //   name: 'Sam',
+  //   place: 'London, England',
+  //   img: image8,
+  //   message:
+  //     'A crypto website that really helps me in trading or investing in cryptocurrencies. The pair in each coin is very diverse.',
+  // },
 ]
 
 const Testimonials = () => {
@@ -120,7 +120,7 @@ const Testimonials = () => {
         </motion.div>
       </motion.div>
 
-      <div className="py-7 w-full border border-gray-200 bg-gradient-to-r from-[#40404A] to-[#14131b] my-10 text-white text-center rounded-xl">
+      <div className="py-7 w-full border border-gray-200 bg-gradient-to-r from-[#1b2330] to-[#010a19] my-10 text-white text-center rounded-xl">
         <h2 className="text-4xl leading-10">
           Let's start investing your crypto <br /> coin right now!
         </h2>
